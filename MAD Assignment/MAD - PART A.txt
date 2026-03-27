@@ -1,0 +1,37 @@
+MAD - PART A: 
+[70%]
+
+1.Functional Requirements.[ 100 marks]
+
+The application must include the following features:
+
+A. User Management.[20 marks]
+. Student registration and login
+. Role-based access (Student / Provider optional)
+. 50 students,
+
+B. Listings.[25 marks]
+. Title, price (BWP), location (Gaborone areas), type
+. Amenities and availability date
+. Deposit amount
+. At least one image per listing
+. 50 different types of houses stored as records
+
+C. Smart Filtering & Alerts.[20 marks]
+
+. Filter by availability date
+. Local notification when listing matches saved preferences
+
+D. Deposit and Reservation[15 marks]
+
+. Simulated payment workflow
+. Generate receipt/reference number
+. Change listing status to 'Reserved' after payment
+. Prevent other users from reserving a reserved room
+
+E. Extension Feature (Mandatory - choose one)[20 marks]
+
+. Campus distance & route navigation OR
+. Chat between student and landlord
+
+Total Marks [100]
