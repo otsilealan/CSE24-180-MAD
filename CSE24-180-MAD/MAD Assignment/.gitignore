@@ -1,0 +1,10 @@
+build/
+out/
+.gradle/
+*.class
+*.jar
+*.iml
+.DS_Store
+*.log
+.env*
+local.properties
