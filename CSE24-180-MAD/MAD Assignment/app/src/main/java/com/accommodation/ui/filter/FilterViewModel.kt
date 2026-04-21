@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.accommodation.data.database.entities.UserPreferences
 import com.accommodation.data.repository.PreferencesRepository
-import com.accommodation.ui.listings.FilterParams
+import com.accommodation.domain.FilterParams
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

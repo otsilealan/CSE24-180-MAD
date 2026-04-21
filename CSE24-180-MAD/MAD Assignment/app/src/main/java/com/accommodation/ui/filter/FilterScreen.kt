@@ -8,7 +8,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.accommodation.ui.listings.FilterParams
+import com.accommodation.domain.FilterParams
 
 private val LOCATIONS = listOf("", "Gaborone West","Gaborone North","Broadhurst","Tlokweng","Mogoditshane","Phakalane","Block 8","Block 9","Extension 2","Bontleng")
 

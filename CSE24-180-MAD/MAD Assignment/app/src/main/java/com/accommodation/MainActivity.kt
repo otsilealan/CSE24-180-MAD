@@ -13,24 +13,19 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.*
 import androidx.navigation.navArgument
-import com.accommodation.data.database.AppDatabase
-import com.accommodation.data.database.entities.Listing
-import com.accommodation.data.database.entities.Reservation
-import com.accommodation.data.repository.*
 import com.accommodation.ui.auth.*
 import com.accommodation.ui.filter.*
 import com.accommodation.ui.listings.*
 import com.accommodation.ui.navigation.MapScreen
+import com.accommodation.ui.navigation.NavigationViewModel
 import com.accommodation.ui.reservation.*
 import com.accommodation.ui.theme.AccommodationTheme
 import com.accommodation.utils.SessionManager
 import com.accommodation.workers.NotificationWorker
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,27 +51,21 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun AppNavigation(deepLinkListingId: Int = -1) {
-    val context = LocalContext.current
-    val db = remember { AppDatabase.getInstance(context) }
-    val userRepo = remember { UserRepository(db.userDao()) }
-    val listingRepo = remember { ListingRepository(db.listingDao()) }
-    val reservationRepo = remember { ReservationRepository(db.reservationDao(), db.listingDao()) }
-    val prefsRepo = remember { PreferencesRepository(db.preferencesDao()) }
+    val app = androidx.compose.ui.platform.LocalContext.current.applicationContext as AccommodationApp
+    val factory = remember { AppViewModelFactory(app.container) }
+    val context = androidx.compose.ui.platform.LocalContext.current
 
-    val authViewModel = remember { AuthViewModel(userRepo) }
-    val listingsViewModel = remember { ListingsViewModel(listingRepo) }
-    val filterViewModel = remember { FilterViewModel(prefsRepo) }
-    val reservationViewModel = remember { ReservationViewModel(reservationRepo) }
+    val authViewModel: AuthViewModel = viewModel(factory = factory)
+    val listingsViewModel: ListingsViewModel = viewModel(factory = factory)
+    val filterViewModel: FilterViewModel = viewModel(factory = factory)
+    val reservationViewModel: ReservationViewModel = viewModel(factory = factory)
+    val navViewModel: NavigationViewModel = viewModel(factory = factory)
+
+    val currentListing by navViewModel.currentListing.collectAsState()
+    val currentReservation by navViewModel.currentReservation.collectAsState()
 
     val navController = rememberNavController()
-    val scope = rememberCoroutineScope()
-
-    // Transient state shared across screens
-    var currentListing by remember { mutableStateOf<Listing?>(null) }
-    var currentReservation by remember { mutableStateOf<Reservation?>(null) }
-
     val startDest = if (SessionManager.isLoggedIn(context)) "listings" else "login"
-
     val userId = SessionManager.getUserId(context)
     val role = SessionManager.getRole(context)
 
@@ -84,8 +73,7 @@ fun AppNavigation(deepLinkListingId: Int = -1) {
         bottomBar = {
             val navBackStack by navController.currentBackStackEntryAsState()
             val current = navBackStack?.destination?.route
-            val showBar = current in listOf("listings", "profile")
-            if (showBar) {
+            if (current in listOf("listings", "profile")) {
                 NavigationBar {
                     NavigationBarItem(selected = current == "listings", onClick = { navController.navigate("listings") { launchSingleTop = true } }, icon = { Icon(Icons.Default.Home, null) }, label = { Text("Listings") })
                     NavigationBarItem(selected = current == "profile", onClick = { navController.navigate("profile") { launchSingleTop = true } }, icon = { Icon(Icons.Default.Person, null) }, label = { Text("Profile") })
@@ -121,10 +109,8 @@ fun AppNavigation(deepLinkListingId: Int = -1) {
                 ListingsScreen(
                     viewModel = listingsViewModel,
                     onListingClick = { id ->
-                        scope.launch {
-                            currentListing = listingRepo.findById(id)
-                            navController.navigate("listing_detail")
-                        }
+                        navViewModel.loadListing(id)
+                        navController.navigate("listing_detail")
                     },
                     onFilterClick = { navController.navigate("filter") }
                 )
@@ -138,8 +124,8 @@ fun AppNavigation(deepLinkListingId: Int = -1) {
                         onBack = { navController.popBackStack() },
                         onReserve = { navController.navigate("payment") },
                         onViewRoute = {
-                            val coords = ListingsViewModel.campusCoords[listing.location]
-                            if (coords != null) navController.navigate("map/${coords.first}/${coords.second}")
+                            val coords = navViewModel.getListingLatLng(listing)
+                            navController.navigate("map/${coords.latitude}/${coords.longitude}")
                         }
                     )
                 }
@@ -166,7 +152,7 @@ fun AppNavigation(deepLinkListingId: Int = -1) {
                         studentId = userId,
                         viewModel = reservationViewModel,
                         onSuccess = { reservation ->
-                            currentReservation = reservation
+                            navViewModel.setReservation(reservation)
                             navController.navigate("receipt") { popUpTo("listings") }
                         },
                         onBack = { navController.popBackStack() }
@@ -181,7 +167,7 @@ fun AppNavigation(deepLinkListingId: Int = -1) {
                         listingTitle = currentListing?.title ?: "",
                         listingLocation = currentListing?.location ?: "",
                         onDone = {
-                            currentListing = null; currentReservation = null
+                            navViewModel.clearTransaction()
                             navController.navigate("listings") { popUpTo("listings") { inclusive = true } }
                         }
                     )
@@ -213,7 +199,7 @@ fun AppNavigation(deepLinkListingId: Int = -1) {
     // Handle deep link from notification
     LaunchedEffect(deepLinkListingId) {
         if (deepLinkListingId != -1 && SessionManager.isLoggedIn(context)) {
-            currentListing = listingRepo.findById(deepLinkListingId)
+            navViewModel.loadListing(deepLinkListingId)
             navController.navigate("listing_detail")
         }
     }
