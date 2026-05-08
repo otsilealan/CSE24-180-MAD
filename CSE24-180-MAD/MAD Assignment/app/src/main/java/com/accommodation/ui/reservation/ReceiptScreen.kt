@@ -56,10 +56,10 @@ fun ReceiptScreen(reservation: Reservation, listingTitle: String, listingLocatio
             ) {
                 Column(modifier = Modifier.padding(20.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
                     ReceiptRow("Reference Number", reservation.referenceNumber)
-                    Divider(alpha = 0.5f)
+                    Divider(color = MaterialTheme.colorScheme.outlineVariant)
                     ReceiptRow("Accommodation", listingTitle)
                     ReceiptRow("Location", listingLocation)
-                    Divider(alpha = 0.5f)
+                    Divider(color = MaterialTheme.colorScheme.outlineVariant)
                     ReceiptRow("Amount Paid", "BWP ${reservation.amount}")
                     ReceiptRow("Date", SimpleDateFormat("dd MMM yyyy, HH:mm", Locale.getDefault()).format(Date(reservation.reservationDate)))
                 }

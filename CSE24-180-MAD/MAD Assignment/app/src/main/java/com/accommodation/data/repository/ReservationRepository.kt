@@ -7,13 +7,13 @@ import com.accommodation.data.database.entities.Reservation
 import kotlinx.coroutines.flow.Flow
 import java.util.UUID
 
-class ReservationRepository(
+open class ReservationRepository(
     private val reservationDao: ReservationDao,
     private val listingDao: ListingDao
 ) {
     fun getByStudent(studentId: Int): Flow<List<Reservation>> = reservationDao.getByStudent(studentId)
 
-    suspend fun reserve(listing: Listing, studentId: Int): Result<Reservation> {
+    open suspend fun reserve(listing: Listing, studentId: Int): Result<Reservation> {
         val fresh = listingDao.findById(listing.id) ?: return Result.failure(Exception("Listing not found"))
         if (fresh.status == "Reserved") return Result.failure(Exception("This listing has already been reserved"))
         val reservation = Reservation(

@@ -46,7 +46,7 @@ fun ProfileScreen(userId: Int, role: String, onLogout: () -> Unit) {
             ) {
                 Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
                     ProfileItem("User ID", userId.toString())
-                    Divider(alpha = 0.3f)
+                    Divider(color = MaterialTheme.colorScheme.outlineVariant)
                     ProfileItem("Account Role", role)
                 }
             }

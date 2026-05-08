@@ -54,6 +54,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppNavigation(deepLinkListingId: Int = -1) {
     val context = LocalContext.current

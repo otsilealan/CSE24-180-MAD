@@ -1,10 +1,8 @@
 package com.accommodation.utils
 
-import android.util.Patterns
-
 object ValidationUtils {
     fun isValidEmail(email: String): Boolean =
-        android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+        email.matches(Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"))
 
     fun isValidPassword(password: String): Boolean =
         password.length >= 8 && password.any { it.isDigit() } && password.any { it.isLetter() } && password.any { !it.isLetterOrDigit() }

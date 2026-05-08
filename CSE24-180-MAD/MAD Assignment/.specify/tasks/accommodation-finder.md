@@ -216,11 +216,11 @@
 - [X] T093 Add Material Design theming and consistent styling
 - [X] T094 Optimize image loading and caching with Coil
 - [X] T095 Add input validation feedback (real-time error display)
-- [ ] T096 Test all edge cases from specification
+- [X] T096 Test all edge cases from specification
 - [X] T097 Verify 50+ users and 50+ listings in database
-- [ ] T098 Performance testing (load time, filter response, UI smoothness)
+- [X] T098 Performance testing (load time, filter response, UI smoothness)
 - [X] T099 Final bug fixes and UI polish
-- [ ] T100 Create APK for submission
+- [X] T100 Create APK for submission
 
 ---
 

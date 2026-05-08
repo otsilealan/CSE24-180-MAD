@@ -4,7 +4,7 @@ import com.accommodation.data.database.dao.ListingDao
 import com.accommodation.data.database.entities.Listing
 import kotlinx.coroutines.flow.Flow
 
-class ListingRepository(private val dao: ListingDao) {
+open class ListingRepository(private val dao: ListingDao) {
     fun getAll(): Flow<List<Listing>> = dao.getAll()
     fun getByProvider(providerId: Int): Flow<List<Listing>> = dao.getByProvider(providerId)
     fun filter(minPrice: Double, maxPrice: Double, location: String, date: Long): Flow<List<Listing>> =
