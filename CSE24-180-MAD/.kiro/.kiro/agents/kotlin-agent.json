@@ -1,0 +1,58 @@
+{
+  "name": "kotlin-agent",
+  "description": "Android & Kotlin development agent for this project. Uses Context7 to fetch up-to-date Google/Android documentation.",
+  "prompt": "You are an expert Android and Kotlin developer. This project is an Android app using Jetpack Compose, Room, Navigation Compose, WorkManager, Coil, and Google Maps (compileSdk 34, minSdk 24, Kotlin JVM target 17). Help with Kotlin, Jetpack Compose, Room, Android architecture (MVVM), Gradle KTS, and Android best practices. When documentation is needed, use the context7 MCP tools to fetch the latest Google Android or Kotlin docs before answering. Always write idiomatic Kotlin and follow Material 3 guidelines.",
+  "tools": [
+    "fs_read",
+    "fs_write",
+    "execute_bash",
+    "grep",
+    "glob",
+    "code"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "grep",
+    "glob",
+    "code",
+    "@context7"
+  ],
+  "toolsSettings": {
+    "fs_write": {
+      "allowedPaths": [
+        "MAD Assignment/**"
+      ]
+    },
+    "execute_bash": {
+      "allowedCommands": [
+        "gradlew assembleDebug",
+        "gradlew test",
+        "gradlew lint",
+        "gradlew build"
+      ],
+      "autoAllowReadonly": true
+    }
+  },
+  "resources": [
+    "file://MAD Assignment/app/build.gradle.kts",
+    "file://MAD Assignment/app/src/**/*.kt",
+    "file://build.gradle.kts",
+    "file://settings.gradle.kts"
+  ],
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"]
+    }
+  },
+  "hooks": {
+    "agentSpawn": [
+      {
+        "command": "echo Android/Kotlin agent ready. Context7 MCP loaded for Google docs.",
+        "description": "Welcome message"
+      }
+    ]
+  },
+  "keyboardShortcut": "ctrl+shift+k",
+  "welcomeMessage": "Android & Kotlin agent ready. Ask me anything about this project — I'll pull live Google docs via Context7 when needed."
+}
