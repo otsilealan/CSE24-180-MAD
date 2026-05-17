@@ -27,15 +27,13 @@ object SeedData {
         "Shared House"   to (700..1200)
     )
 
-    // Real accommodation photos from Unsplash (free, no auth needed)
-    // One image per accommodation type for relevance
-    private val typeImages = mapOf(
-        "Single Room"   to "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80",
-        "Double Room"   to "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80",
-        "Bachelor Flat" to "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80",
-        "1-Bedroom"     to "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80",
-        "2-Bedroom"     to "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80",
-        "Shared House"  to "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600&q=80"
+    // Drawable resource names for property images (res/drawable/property_0..4.xml)
+    private val imageResNames = listOf(
+        "res:property_0",
+        "res:property_1",
+        "res:property_2",
+        "res:property_3",
+        "res:property_4"
     )
 
     suspend fun seed(db: AppDatabase) {
@@ -86,7 +84,7 @@ object SeedData {
                 amenities = amenitySets[i % amenitySets.size],
                 availabilityDate = cal.timeInMillis,
                 deposit = deposit,
-                imagePath = typeImages[type] ?: typeImages.values.first()
+                imagePath = imageResNames[i % imageResNames.size]
             ))
         }
     }

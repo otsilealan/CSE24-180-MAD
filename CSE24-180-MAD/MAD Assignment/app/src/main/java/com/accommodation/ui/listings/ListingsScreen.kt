@@ -1,5 +1,6 @@
 package com.accommodation.ui.listings
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -11,9 +12,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.accommodation.data.database.entities.Listing
+import com.accommodation.utils.ImageUtils
 import java.io.File
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -70,14 +73,26 @@ fun ListingCard(listing: Listing, distance: Double, onClick: () -> Unit) {
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Row(modifier = Modifier.height(120.dp)) {
-            AsyncImage(
-                model = if (listing.imagePath.startsWith("/")) File(listing.imagePath) else listing.imagePath,
-                contentDescription = listing.title,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .width(120.dp)
-                    .fillMaxHeight()
-            )
+            val drawableRes = ImageUtils.resolveDrawableRes(listing.imagePath)
+            if (drawableRes != null) {
+                Image(
+                    painter = painterResource(drawableRes),
+                    contentDescription = listing.title,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .width(120.dp)
+                        .fillMaxHeight()
+                )
+            } else {
+                AsyncImage(
+                    model = if (listing.imagePath.startsWith("/")) File(listing.imagePath) else listing.imagePath,
+                    contentDescription = listing.title,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .width(120.dp)
+                        .fillMaxHeight()
+                )
+            }
             Column(
                 modifier = Modifier
                     .padding(12.dp)
