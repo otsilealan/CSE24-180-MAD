@@ -1,6 +1,5 @@
 package com.accommodation.ui.listings
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -12,11 +11,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.accommodation.data.database.entities.Listing
-import com.accommodation.utils.ImageUtils
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -51,26 +48,14 @@ fun ListingDetailScreen(
                 .padding(padding)
                 .verticalScroll(rememberScrollState())
         ) {
-            val drawableRes = ImageUtils.resolveDrawableRes(listing.imagePath)
-            if (drawableRes != null) {
-                Image(
-                    painter = painterResource(drawableRes),
-                    contentDescription = listing.title,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(250.dp)
-                )
-            } else {
-                AsyncImage(
-                    model = if (listing.imagePath.startsWith("/")) File(listing.imagePath) else listing.imagePath,
-                    contentDescription = listing.title,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(250.dp)
-                )
-            }
+            AsyncImage(
+                model = if (listing.imagePath.startsWith("/")) File(listing.imagePath) else listing.imagePath,
+                contentDescription = listing.title,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(250.dp)
+            )
             
             Column(
                 modifier = Modifier.padding(16.dp),
