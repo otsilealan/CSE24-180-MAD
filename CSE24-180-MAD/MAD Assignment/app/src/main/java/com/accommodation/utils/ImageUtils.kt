@@ -4,12 +4,27 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import com.accommodation.R
 import java.io.File
 import java.io.FileOutputStream
 
 object ImageUtils {
     private const val MAX_DIMENSION = 800
     private const val QUALITY = 80
+
+    /** Maps a "res:name" imagePath to a drawable resource ID, or null if not a resource ref. */
+    fun resolveDrawableRes(imagePath: String): Int? {
+        if (!imagePath.startsWith("res:")) return null
+        val name = imagePath.removePrefix("res:")
+        return when (name) {
+            "property_0" -> R.drawable.property_0
+            "property_1" -> R.drawable.property_1
+            "property_2" -> R.drawable.property_2
+            "property_3" -> R.drawable.property_3
+            "property_4" -> R.drawable.property_4
+            else -> null
+        }
+    }
 
     fun saveImage(context: Context, uri: Uri): String? = runCatching {
         val input = context.contentResolver.openInputStream(uri) ?: return null

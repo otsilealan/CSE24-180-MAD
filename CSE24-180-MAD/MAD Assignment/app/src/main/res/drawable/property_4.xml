@@ -1,0 +1,26 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="150dp"
+    android:viewportWidth="200"
+    android:viewportHeight="150">
+  <!-- Sky gradient base -->
+  <path android:fillColor="#FFF3E0" android:pathData="M0,0 L200,0 L200,80 L0,80 Z"/>
+  <!-- Ground -->
+  <path android:fillColor="#DCEDC8" android:pathData="M0,80 L200,80 L200,150 L0,150 Z"/>
+  <!-- Main house -->
+  <path android:fillColor="#FFE0B2" android:pathData="M30,80 L130,80 L130,45 L30,45 Z"/>
+  <!-- Roof -->
+  <path android:fillColor="#E64A19" android:pathData="M22,45 L80,12 L138,45 Z"/>
+  <!-- Extension/garage -->
+  <path android:fillColor="#FFCCBC" android:pathData="M130,80 L175,80 L175,52 L130,52 Z"/>
+  <!-- Garage door -->
+  <path android:fillColor="#BCAAA4" android:pathData="M133,80 L172,80 L172,55 L133,55 Z"/>
+  <!-- Main door -->
+  <path android:fillColor="#4E342E" android:pathData="M65,80 L95,80 L95,58 L65,58 Z"/>
+  <!-- Windows -->
+  <path android:fillColor="#B3E5FC" android:pathData="M35,68 L58,68 L58,52 L35,52 Z"/>
+  <path android:fillColor="#B3E5FC" android:pathData="M102,68 L125,68 L125,52 L102,52 Z"/>
+  <!-- Tree -->
+  <path android:fillColor="#388E3C" android:pathData="M160,80 C160,60 185,60 185,80 Z"/>
+  <path android:fillColor="#2E7D32" android:pathData="M168,80 L177,80 L177,95 L168,95 Z"/>
+</vector>

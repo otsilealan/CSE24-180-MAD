@@ -1,0 +1,26 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="150dp"
+    android:viewportWidth="200"
+    android:viewportHeight="150">
+  <!-- Sky -->
+  <path android:fillColor="#B3E5FC" android:pathData="M0,0 L200,0 L200,80 L0,80 Z"/>
+  <!-- Ground -->
+  <path android:fillColor="#A5D6A7" android:pathData="M0,80 L200,80 L200,150 L0,150 Z"/>
+  <!-- Apartment block -->
+  <path android:fillColor="#CFD8DC" android:pathData="M30,80 L170,80 L170,20 L30,20 Z"/>
+  <!-- Roof line -->
+  <path android:fillColor="#90A4AE" android:pathData="M25,20 L175,20 L175,15 L25,15 Z"/>
+  <!-- Windows row 1 -->
+  <path android:fillColor="#FFF9C4" android:pathData="M40,35 L60,35 L60,25 L40,25 Z"/>
+  <path android:fillColor="#FFF9C4" android:pathData="M70,35 L90,35 L90,25 L70,25 Z"/>
+  <path android:fillColor="#FFF9C4" android:pathData="M110,35 L130,35 L130,25 L110,25 Z"/>
+  <path android:fillColor="#FFF9C4" android:pathData="M140,35 L160,35 L160,25 L140,25 Z"/>
+  <!-- Windows row 2 -->
+  <path android:fillColor="#FFF9C4" android:pathData="M40,55 L60,55 L60,45 L40,45 Z"/>
+  <path android:fillColor="#FFF9C4" android:pathData="M70,55 L90,55 L90,45 L70,45 Z"/>
+  <path android:fillColor="#FFF9C4" android:pathData="M110,55 L130,55 L130,45 L110,45 Z"/>
+  <path android:fillColor="#FFF9C4" android:pathData="M140,55 L160,55 L160,45 L140,45 Z"/>
+  <!-- Door -->
+  <path android:fillColor="#5D4037" android:pathData="M88,80 L112,80 L112,62 L88,62 Z"/>
+</vector>

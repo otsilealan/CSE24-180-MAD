@@ -17,6 +17,25 @@ object SeedData {
         "WiFi,Water,Electricity,Parking,Furnished,Security"
     )
 
+    // Realistic BWP monthly rents per type (min to max range)
+    private val priceRanges = mapOf(
+        "Single Room"    to (800..1400),
+        "Double Room"    to (1000..1800),
+        "Bachelor Flat"  to (1200..2200),
+        "1-Bedroom"      to (1500..2800),
+        "2-Bedroom"      to (2200..3500),
+        "Shared House"   to (700..1200)
+    )
+
+    // Drawable resource names for property images (res/drawable/property_0..4.xml)
+    private val imageResNames = listOf(
+        "res:property_0",
+        "res:property_1",
+        "res:property_2",
+        "res:property_3",
+        "res:property_4"
+    )
+
     suspend fun seed(db: AppDatabase) {
         if (db.userDao().count() > 0) return // already seeded
 
@@ -43,21 +62,29 @@ object SeedData {
         }
 
         val cal = Calendar.getInstance()
+        val rng = java.util.Random(42) // fixed seed for reproducibility
 
         // 55 listings across 5 providers (ids 51–55)
         repeat(55) { i ->
             cal.timeInMillis = System.currentTimeMillis()
             cal.add(Calendar.DAY_OF_YEAR, 7 + (i % 30))
+            val type = types[i % types.size]
+            val range = priceRanges[type]!!
+            val price = (range.first + rng.nextInt(range.last - range.first + 1)).toDouble()
+            val deposit = (price * (if (i % 3 == 0) 1.0 else 0.5)).let {
+                // round to nearest 50
+                (Math.round(it / 50.0) * 50).toDouble()
+            }
             db.listingDao().insert(Listing(
                 providerId = 51 + (i % 5),
-                title = "${types[i % types.size]} in ${areas[i % areas.size]}",
-                price = (1500 + (i * 97) % 3500).toDouble(),
+                title = "${type} in ${areas[i % areas.size]}",
+                price = price,
                 location = areas[i % areas.size],
-                type = types[i % types.size],
+                type = type,
                 amenities = amenitySets[i % amenitySets.size],
                 availabilityDate = cal.timeInMillis,
-                deposit = (500 + (i * 43) % 1500).toDouble(),
-                imagePath = "placeholder_${i % 5}"
+                deposit = deposit,
+                imagePath = imageResNames[i % imageResNames.size]
             ))
         }
     }
