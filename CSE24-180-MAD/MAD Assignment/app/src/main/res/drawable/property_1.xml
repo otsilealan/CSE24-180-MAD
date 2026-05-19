@@ -4,23 +4,41 @@
     android:viewportWidth="200"
     android:viewportHeight="150">
   <!-- Sky -->
-  <path android:fillColor="#B3E5FC" android:pathData="M0,0 L200,0 L200,80 L0,80 Z"/>
+  <path android:fillColor="#7FB3D3" android:pathData="M0,0 L200,0 L200,95 L0,95 Z"/>
+  <!-- Sun -->
+  <path android:fillColor="#F9E04B" android:pathData="M170,20 Q180,10 190,20 Q180,30 170,20 Z"/>
+  <path android:fillColor="#F9E04B" android:pathData="M168,15 Q178,5 188,15 Q178,25 168,15 Z"/>
+  <path android:fillColor="#F9E04B" android:pathData="M175,10 Q185,0 195,10 Q185,20 175,10 Z"/>
+  <!-- Simplified sun circle -->
+  <path android:fillColor="#F9E04B" android:pathData="M172,12 Q180,5 188,12 Q188,22 180,25 Q172,22 172,12 Z"/>
   <!-- Ground -->
-  <path android:fillColor="#A5D6A7" android:pathData="M0,80 L200,80 L200,150 L0,150 Z"/>
-  <!-- Apartment block -->
-  <path android:fillColor="#CFD8DC" android:pathData="M30,80 L170,80 L170,20 L30,20 Z"/>
-  <!-- Roof line -->
-  <path android:fillColor="#90A4AE" android:pathData="M25,20 L175,20 L175,15 L25,15 Z"/>
-  <!-- Windows row 1 -->
-  <path android:fillColor="#FFF9C4" android:pathData="M40,35 L60,35 L60,25 L40,25 Z"/>
-  <path android:fillColor="#FFF9C4" android:pathData="M70,35 L90,35 L90,25 L70,25 Z"/>
-  <path android:fillColor="#FFF9C4" android:pathData="M110,35 L130,35 L130,25 L110,25 Z"/>
-  <path android:fillColor="#FFF9C4" android:pathData="M140,35 L160,35 L160,25 L140,25 Z"/>
-  <!-- Windows row 2 -->
-  <path android:fillColor="#FFF9C4" android:pathData="M40,55 L60,55 L60,45 L40,45 Z"/>
-  <path android:fillColor="#FFF9C4" android:pathData="M70,55 L90,55 L90,45 L70,45 Z"/>
-  <path android:fillColor="#FFF9C4" android:pathData="M110,55 L130,55 L130,45 L110,45 Z"/>
-  <path android:fillColor="#FFF9C4" android:pathData="M140,55 L160,55 L160,45 L140,45 Z"/>
-  <!-- Door -->
-  <path android:fillColor="#5D4037" android:pathData="M88,80 L112,80 L112,62 L88,62 Z"/>
+  <path android:fillColor="#7CB342" android:pathData="M0,95 L200,95 L200,150 L0,150 Z"/>
+  <!-- Driveway -->
+  <path android:fillColor="#B0BEC5" android:pathData="M70,150 L130,150 L120,110 L80,110 Z"/>
+  <!-- House body - wider double room -->
+  <path android:fillColor="#FDEBD0" android:pathData="M30,95 L170,95 L170,52 L30,52 Z"/>
+  <!-- Roof -->
+  <path android:fillColor="#1565C0" android:pathData="M22,54 L100,15 L178,54 Z"/>
+  <!-- Roof overhang line -->
+  <path android:fillColor="#0D47A1" android:pathData="M22,54 L178,54 L178,60 L22,60 Z"/>
+  <!-- Left door -->
+  <path android:fillColor="#5D4037" android:pathData="M50,95 L80,95 L80,70 L50,70 Z"/>
+  <!-- Right door -->
+  <path android:fillColor="#5D4037" android:pathData="M120,95 L150,95 L150,70 L120,70 Z"/>
+  <!-- Door knobs -->
+  <path android:fillColor="#FFD700" android:pathData="M76,83 Q79,83 79,86 Q79,89 76,89 Q73,89 73,86 Q73,83 76,83 Z"/>
+  <path android:fillColor="#FFD700" android:pathData="M146,83 Q149,83 149,86 Q149,89 146,89 Q143,89 143,86 Q143,83 146,83 Z"/>
+  <!-- Windows -->
+  <path android:fillColor="#AED6F1" android:pathData="M35,78 L48,78 L48,62 L35,62 Z"/>
+  <path android:fillColor="#AED6F1" android:pathData="M85,78 L115,78 L115,62 L85,62 Z"/>
+  <path android:fillColor="#AED6F1" android:pathData="M152,78 L165,78 L165,62 L152,62 Z"/>
+  <!-- Center window divider -->
+  <path android:fillColor="#5D4037" android:pathData="M99,62 L101,62 L101,78 L99,78 Z"/>
+  <!-- Garage -->
+  <path android:fillColor="#90A4AE" android:pathData="M155,95 L170,95 L170,75 L155,75 Z"/>
+  <!-- Trees -->
+  <path android:fillColor="#2E7D32" android:pathData="M15,95 Q20,75 25,95 Z"/>
+  <path android:fillColor="#388E3C" android:pathData="M12,88 Q20,68 28,88 Z"/>
+  <path android:fillColor="#2E7D32" android:pathData="M175,95 Q180,75 185,95 Z"/>
+  <path android:fillColor="#388E3C" android:pathData="M172,88 Q180,68 188,88 Z"/>
 </vector>

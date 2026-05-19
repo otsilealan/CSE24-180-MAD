@@ -22,6 +22,7 @@ object ImageUtils {
             "property_2" -> R.drawable.property_2
             "property_3" -> R.drawable.property_3
             "property_4" -> R.drawable.property_4
+            "property_5" -> R.drawable.property_5
             else -> null
         }
     }

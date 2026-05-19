@@ -27,13 +27,14 @@ object SeedData {
         "Shared House"   to (700..1200)
     )
 
-    // Drawable resource names for property images (res/drawable/property_0..4.xml)
-    private val imageResNames = listOf(
-        "res:property_0",
-        "res:property_1",
-        "res:property_2",
-        "res:property_3",
-        "res:property_4"
+    // Each property type maps to a distinct drawable that visually represents it
+    private val typeImageMap = mapOf(
+        "Single Room"   to "res:property_0",
+        "Double Room"   to "res:property_1",
+        "Bachelor Flat" to "res:property_2",
+        "1-Bedroom"     to "res:property_3",
+        "2-Bedroom"     to "res:property_4",
+        "Shared House"  to "res:property_5"
     )
 
     suspend fun seed(db: AppDatabase) {
@@ -84,7 +85,7 @@ object SeedData {
                 amenities = amenitySets[i % amenitySets.size],
                 availabilityDate = cal.timeInMillis,
                 deposit = deposit,
-                imagePath = imageResNames[i % imageResNames.size]
+                imagePath = typeImageMap[type] ?: "res:property_0"
             ))
         }
     }

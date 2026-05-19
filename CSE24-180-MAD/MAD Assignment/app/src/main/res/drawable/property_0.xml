@@ -3,18 +3,39 @@
     android:height="150dp"
     android:viewportWidth="200"
     android:viewportHeight="150">
-  <!-- Sky -->
-  <path android:fillColor="#87CEEB" android:pathData="M0,0 L200,0 L200,90 L0,90 Z"/>
+  <!-- Sky gradient background -->
+  <path android:fillColor="#5C9BD6" android:pathData="M0,0 L200,0 L200,95 L0,95 Z"/>
+  <!-- Clouds -->
+  <path android:fillColor="#FFFFFF" android:pathData="M20,20 Q30,12 40,20 Q50,12 60,20 Q60,30 20,30 Z"/>
+  <path android:fillColor="#FFFFFF" android:pathData="M130,15 Q140,8 150,15 Q158,8 166,15 Q166,24 130,24 Z"/>
   <!-- Ground -->
-  <path android:fillColor="#8BC34A" android:pathData="M0,90 L200,90 L200,150 L0,150 Z"/>
+  <path android:fillColor="#6AAF3D" android:pathData="M0,95 L200,95 L200,150 L0,150 Z"/>
+  <!-- Path to door -->
+  <path android:fillColor="#C8A96E" android:pathData="M88,150 L112,150 L108,110 L92,110 Z"/>
   <!-- House body -->
-  <path android:fillColor="#FFCC80" android:pathData="M50,90 L150,90 L150,55 L50,55 Z"/>
+  <path android:fillColor="#E8D5B0" android:pathData="M45,95 L155,95 L155,55 L45,55 Z"/>
   <!-- Roof -->
-  <path android:fillColor="#EF5350" android:pathData="M40,55 L100,20 L160,55 Z"/>
+  <path android:fillColor="#C0392B" android:pathData="M35,57 L100,18 L165,57 Z"/>
+  <!-- Roof ridge -->
+  <path android:fillColor="#A93226" android:pathData="M35,57 L165,57 L165,62 L35,62 Z"/>
   <!-- Door -->
-  <path android:fillColor="#795548" android:pathData="M85,90 L115,90 L115,65 L85,65 Z"/>
+  <path android:fillColor="#6D4C41" android:pathData="M82,95 L118,95 L118,68 L82,68 Z"/>
+  <!-- Door knob -->
+  <path android:fillColor="#FFD700" android:pathData="M113,82 Q116,82 116,85 Q116,88 113,88 Q110,88 110,85 Q110,82 113,82 Z"/>
   <!-- Window left -->
-  <path android:fillColor="#B3E5FC" android:pathData="M58,75 L78,75 L78,60 L58,60 Z"/>
+  <path android:fillColor="#AED6F1" android:pathData="M55,80 L78,80 L78,62 L55,62 Z"/>
+  <!-- Window left frame -->
+  <path android:fillColor="#6D4C41" android:pathData="M55,70 L78,70 M66,62 L66,80" android:strokeColor="#6D4C41" android:strokeWidth="2"/>
   <!-- Window right -->
-  <path android:fillColor="#B3E5FC" android:pathData="M122,75 L142,75 L142,60 L122,60 Z"/>
+  <path android:fillColor="#AED6F1" android:pathData="M122,80 L145,80 L145,62 L122,62 Z"/>
+  <!-- Window right frame -->
+  <path android:fillColor="#6D4C41" android:pathData="M122,70 L145,70 M133,62 L133,80" android:strokeColor="#6D4C41" android:strokeWidth="2"/>
+  <!-- Chimney -->
+  <path android:fillColor="#A93226" android:pathData="M130,18 L145,18 L145,40 L130,40 Z"/>
+  <!-- Smoke -->
+  <path android:fillColor="#CCCCCC" android:pathData="M135,14 Q138,8 141,14 Q144,8 137,4 Q130,8 135,14 Z"/>
+  <!-- Bush left -->
+  <path android:fillColor="#2E7D32" android:pathData="M45,95 Q55,80 65,95 Z"/>
+  <!-- Bush right -->
+  <path android:fillColor="#2E7D32" android:pathData="M135,95 Q145,80 155,95 Z"/>
 </vector>

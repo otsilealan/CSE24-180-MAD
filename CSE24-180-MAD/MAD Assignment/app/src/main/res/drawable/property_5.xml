@@ -1,0 +1,52 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="150dp"
+    android:viewportWidth="200"
+    android:viewportHeight="150">
+  <!-- Sky - morning light -->
+  <path android:fillColor="#B3E5FC" android:pathData="M0,0 L200,0 L200,95 L0,95 Z"/>
+  <!-- Sun -->
+  <path android:fillColor="#FFF176" android:pathData="M155,18 Q165,8 175,18 Q175,28 165,30 Q155,28 155,18 Z"/>
+  <!-- Ground -->
+  <path android:fillColor="#8BC34A" android:pathData="M0,95 L200,95 L200,150 L0,150 Z"/>
+  <!-- Shared house - terrace style, 3 units -->
+  <!-- Unit 1 body -->
+  <path android:fillColor="#FFCCBC" android:pathData="M10,95 L72,95 L72,50 L10,50 Z"/>
+  <!-- Unit 1 roof -->
+  <path android:fillColor="#BF360C" android:pathData="M6,52 L41,22 L76,52 Z"/>
+  <path android:fillColor="#D84315" android:pathData="M6,52 L76,52 L76,57 L6,57 Z"/>
+  <!-- Unit 2 body -->
+  <path android:fillColor="#E1F5FE" android:pathData="M72,95 L128,95 L128,50 L72,50 Z"/>
+  <!-- Unit 2 roof -->
+  <path android:fillColor="#1565C0" android:pathData="M68,52 L100,22 L132,52 Z"/>
+  <path android:fillColor="#0D47A1" android:pathData="M68,52 L132,52 L132,57 L68,57 Z"/>
+  <!-- Unit 3 body -->
+  <path android:fillColor="#F3E5F5" android:pathData="M128,95 L190,95 L190,50 L128,50 Z"/>
+  <!-- Unit 3 roof -->
+  <path android:fillColor="#6A1B9A" android:pathData="M124,52 L159,22 L194,52 Z"/>
+  <path android:fillColor="#4A148C" android:pathData="M124,52 L194,52 L194,57 L124,57 Z"/>
+  <!-- Unit 1 door -->
+  <path android:fillColor="#5D4037" android:pathData="M25,95 L47,95 L47,72 L25,72 Z"/>
+  <!-- Unit 2 door -->
+  <path android:fillColor="#5D4037" android:pathData="M79,95 L101,95 L101,72 L79,72 Z"/>
+  <!-- Unit 3 door -->
+  <path android:fillColor="#5D4037" android:pathData="M143,95 L165,95 L165,72 L143,72 Z"/>
+  <!-- Door knobs -->
+  <path android:fillColor="#FFD700" android:pathData="M44,83 Q46,83 46,85 Q46,87 44,87 Q42,87 42,85 Q42,83 44,83 Z"/>
+  <path android:fillColor="#FFD700" android:pathData="M98,83 Q100,83 100,85 Q100,87 98,87 Q96,87 96,85 Q96,83 98,83 Z"/>
+  <path android:fillColor="#FFD700" android:pathData="M162,83 Q164,83 164,85 Q164,87 162,87 Q160,87 160,85 Q160,83 162,83 Z"/>
+  <!-- Unit 1 window -->
+  <path android:fillColor="#AED6F1" android:pathData="M12,80 L23,80 L23,60 L12,60 Z"/>
+  <path android:fillColor="#AED6F1" android:pathData="M49,80 L68,80 L68,60 L49,60 Z"/>
+  <!-- Unit 2 window -->
+  <path android:fillColor="#AED6F1" android:pathData="M103,80 L126,80 L126,60 L103,60 Z"/>
+  <!-- Unit 3 window -->
+  <path android:fillColor="#AED6F1" android:pathData="M130,80 L141,80 L141,60 L130,60 Z"/>
+  <path android:fillColor="#AED6F1" android:pathData="M167,80 L188,80 L188,60 L167,60 Z"/>
+  <!-- Shared path -->
+  <path android:fillColor="#BDBDBD" android:pathData="M0,150 L200,150 L200,105 L0,105 Z"/>
+  <!-- Mailboxes -->
+  <path android:fillColor="#78909C" android:pathData="M30,105 L40,105 L40,100 L30,100 Z"/>
+  <path android:fillColor="#78909C" android:pathData="M85,105 L95,105 L95,100 L85,100 Z"/>
+  <path android:fillColor="#78909C" android:pathData="M148,105 L158,105 L158,100 L148,100 Z"/>
+</vector>
